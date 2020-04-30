@@ -1,0 +1,9 @@
+{
+  "name": "rxui",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "pretty-format": "^25.5.0"
+  }
+}
