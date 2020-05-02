@@ -1,9 +1,25 @@
 {
-  "name": "rxui",
+  "name": "rxcode",
   "version": "0.0.1",
-  "main": "index.js",
   "license": "MIT",
+  "private": true,
   "devDependencies": {
-    "pretty-format": "^25.5.0"
-  }
+    "lerna": "^3.20.2",
+    "pretty-format": "25.5.0",
+    "typescript": "3.8.3"
+  },
+  "scripts": {
+    "test": "lerna run test",
+    "build": "lerna run build",
+    "build:deps": "lerna run build --no-private",
+    "start": "yarn build:deps && lerna run start --parallel --ignore @exivity/sandbox",
+    "start:web": "yarn build:deps && yarn --cwd packages/web start",
+    "start:ui": "yarn --cwd packages/ui start",
+    "start:sandbox": "yarn build:deps && yarn --cwd packages/sandbox start",
+    "watch": "lerna run watch --parallel",
+    "generate": "plop"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

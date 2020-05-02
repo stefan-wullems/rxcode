@@ -1,0 +1,18 @@
+{
+  "name": "ui",
+  "version": "0.0.1",
+  "description": "UI for RxCode",
+  "main": "index.js",
+  "author": "Stefan Wullems <stefanwullems1998@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@storybook/html": "^5.3.18",
+    "babel-loader": "^8.1.0"
+  },
+  "scripts": {
+    "start": "start-storybook"
+  }
+}
