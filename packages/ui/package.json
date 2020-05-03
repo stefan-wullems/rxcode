@@ -6,10 +6,13 @@
   "author": "Stefan Wullems <stefanwullems1998@gmail.com>",
   "license": "MIT",
   "private": false,
-  "dependencies": {},
+  "dependencies": {
+    "rxjs": "^6.5.5"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@storybook/html": "^5.3.18",
+    "@storybook/preset-typescript": "^3.0.0",
     "babel-loader": "^8.1.0"
   },
   "scripts": {
