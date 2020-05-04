@@ -1,4 +1,4 @@
-import {Component} from '../utils/component'
+import {BaseComponent} from '../utils/component/component'
 
 interface MarginProps {
   contentLeft: number
@@ -6,7 +6,7 @@ interface MarginProps {
   backgroundColor: string
 }
 
-export class Margin extends Component<MarginProps> {
+export class Margin extends BaseComponent<MarginProps> {
   public static readonly OUTER_CLASS_NAME = 'margin'
 
   private readonly _domNode: HTMLElement
@@ -32,7 +32,7 @@ export class Margin extends Component<MarginProps> {
     return this._domNode
   }
 
-  public render(): void {
+  public render() {
     this._domNode.classList.add(Margin.OUTER_CLASS_NAME)
     this._domNode.setAttribute('position', 'absolute')
     this._domNode.setAttribute('role', 'presentation')
