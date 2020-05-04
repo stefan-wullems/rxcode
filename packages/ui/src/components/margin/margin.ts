@@ -2,28 +2,13 @@ import {BaseComponent} from '../utils/component'
 
 import './margin.css'
 
-interface MarginProps {
-  height: number
-  backgroundColor: string
-}
-
-export class Margin extends BaseComponent<MarginProps> {
+export class Margin {
   public static readonly OUTER_CLASS_NAME = 'margin'
 
   private readonly _domNode: HTMLElement
 
   constructor() {
-    super()
     this._domNode = document.createElement('div')
-
-    this.registerPropHandlers({
-      height: value => {
-        this._domNode.style.height = value + 'px'
-      },
-      backgroundColor: value => {
-        this._domNode.style.backgroundColor = value
-      },
-    })
   }
 
   public render() {
