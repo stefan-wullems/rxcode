@@ -1,0 +1,17 @@
+{
+  "version": "1",
+  "tags": [
+    {
+      "name": "rxui-margin",
+      "path": "./src/components/margin/margin.ts"
+    },
+    {
+      "name": "rxui-margin-line-overlay",
+      "path": "./src/components/margin/margin.ts"
+    },
+    {
+      "name": "rxui-line-number",
+      "path": "./src/components/margin/overlay/line-number.ts"
+    }
+  ]
+}

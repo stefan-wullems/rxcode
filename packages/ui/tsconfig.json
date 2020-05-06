@@ -1,32 +1,36 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "module": "commonjs",
-    "outDir": "lib",
-    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "inlineSources": true,
+    "lib": ["dom", "dom.iterable", "es2020"],
+    "module": "ESNext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "jsx": "react",
-    "noEmit": true,
-    "allowJs": false,
-    "isolatedModules": true,
-    "declaration": false
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": ".",
+    "rootDirs": ["src"],
+    "sourceMap": true,
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "target": "es2017"
   },
-  "include": [
-    "src/**/*"
-  ],
   "exclude": [
-    "node_modules",
-    "**/*.test.ts*",
-    "**/*.stories.ts*"
-  ]
+    "**/__mocks__/**",
+    "**/__stories__/**",
+    "**/__tests__/**",
+    "**/*.e2e.*",
+    "**/*.spec.*",
+    "**/*.stories.*"
+  ],
+  "include": ["src/**/*"]
 }
