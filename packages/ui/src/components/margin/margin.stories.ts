@@ -1,5 +1,5 @@
 import {Margin} from './margin'
-import {RowNumber} from './row'
+import {RowNumber} from './column'
 
 export default {title: 'Margin'}
 
@@ -11,7 +11,7 @@ export const Default = () => {
 
 export const LineNumberOverlay = () => {
   const margin = new Margin()
-  margin.columnTypes = [RowNumber.componentName]
+  margin.columns = [RowNumber]
 
   return margin
 }

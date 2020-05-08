@@ -1,4 +1,4 @@
-import {AbstractMarginColumn} from './interface'
+import {MarginColumn} from './interface'
 import {html} from 'lit-html'
 
 const rowNumber = document.createElement('template')
@@ -15,7 +15,7 @@ rowNumber.innerHTML = html`
   <div id="row-number"></div>
 `.getHTML()
 
-export class RowNumber extends AbstractMarginColumn {
+export class RowNumber extends HTMLElement implements MarginColumn {
   public static readonly componentName = 'rxui-row-number'
   public static readonly reservedWidth = 20
 

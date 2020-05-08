@@ -1,41 +1,45 @@
-import {html} from 'lit-html'
-import {AbstractMarginColumn} from './row/interface'
-import './row'
+import {MarginColumnConstructor} from './column/interface'
+import './column'
 
 const marginTemplate = document.createElement('template')
-marginTemplate.innerHTML = html`
-  <style>
-    #margin {
-      position: absolute;
-      background-color: #555;
-    }
-    #rows {
-      position: absolute;
-      width: 68px;
-      letter-spacing: 0px;
-    }
-  </style>
+marginTemplate.innerHTML = `
+<style>
+  #margin {
+    position: absolute;
+    background-color: #555;
+  }
+  #rows {
+    position: absolute;
+    width: 68px;
+    letter-spacing: 0px;
+  }
+  .row {
+    position: absolute;
+    width: 100%;
+  }
+</style>
 
-  <div id="margin">
-    <div slot="rows" id="rows"></div>
-  </div>
-`.getHTML()
+<div id="margin">
+  <div id="rows"></div>
+</div>
+`
 
 export class Margin extends HTMLElement {
-  public columnTypes: string[] = []
   public rows = 30
+  public columns: MarginColumnConstructor[] = []
 
   private _rowHeight = 20
   private _baseWidth = 20
-  private _margin: HTMLDivElement
+
+  get _marginElement() {
+    return this.shadowRoot?.querySelector('#margin') as HTMLDivElement
+  }
 
   constructor() {
     super()
 
     const shadowRoot = this.attachShadow({mode: 'open'})
     shadowRoot.appendChild(marginTemplate.content.cloneNode(true))
-
-    this._margin = this.shadowRoot?.querySelector('#margin') as HTMLDivElement
   }
 
   connectedCallback() {
@@ -45,48 +49,40 @@ export class Margin extends HTMLElement {
   }
 
   _initialRender() {
-    this._margin.style.height = this.rows * this._rowHeight + 'px'
-    this._margin.style.width = this._baseWidth + 'px'
+    this._marginElement.style.height = this.rows * this._rowHeight + 'px'
+    this._marginElement.style.width = this._baseWidth + 'px'
     this._renderOverlays()
   }
 
   _renderOverlays() {
-    const lineOverlays = this.shadowRoot?.querySelector('#rows')
+    const rowsElement = this.shadowRoot?.querySelector('#rows')
 
-    this.columnTypes.forEach(type => {
-      const constructor = customElements.get(type)
-      this._margin.style.width =
-        parseFloat(this._margin.style.width) +
-        (constructor.reservedWidth || 0) +
+    this.columns.forEach(column => {
+      this._marginElement.style.width =
+        parseFloat(this._marginElement.style.width) +
+        (column.reservedWidth || 0) +
         'px'
     })
 
     for (let rowNumber = 1; rowNumber <= this.rows; rowNumber++) {
-      lineOverlays?.appendChild(this._createRow(rowNumber))
-    }
-  }
+      const rowElement = document.createElement('div')
+      rowElement.classList.add('row')
 
-  _createRow(row: number) {
-    const rowElement = document.createElement('rxui-margin-row')
+      rowsElement?.appendChild(rowElement)
 
-    this.columnTypes.forEach(elementType => {
-      const lineOverlayElement = document.createElement(
-        elementType,
-      ) as HTMLElement & Partial<AbstractMarginColumn>
-
-      rowElement.appendChild(lineOverlayElement)
-
-      rowElement.style.top = (row - 1) * this._rowHeight + 'px'
+      rowElement.style.top = (rowNumber - 1) * this._rowHeight + 'px'
       rowElement.style.height = this._rowHeight + 'px'
 
-      if (lineOverlayElement.connectedToMarginCallback) {
-        lineOverlayElement.connectedToMarginCallback(row)
-      }
+      this.columns.forEach(column => {
+        const columnElement = new column()
 
-      lineOverlayElement.slot = 'column'
-    })
+        rowElement.appendChild(columnElement)
 
-    return rowElement
+        if (columnElement.connectedToMarginCallback) {
+          columnElement.connectedToMarginCallback(rowNumber)
+        }
+      })
+    }
   }
 }
 
