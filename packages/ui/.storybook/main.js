@@ -1,4 +1,5 @@
 module.exports = {
+  addons: ['@storybook/addon-knobs/register'],
   webpackFinal: async config => {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,

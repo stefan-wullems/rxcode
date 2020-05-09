@@ -1,37 +1,49 @@
 import {MarginColumn} from './interface'
-import {html} from 'lit-html'
+import {html, render} from 'lit-html'
 
-const rowNumber = document.createElement('template')
-rowNumber.innerHTML = html`
-  <style>
-    #row-number {
-      text-align: right;
-      width: 20px;
-      height: 20px;
-      display: block;
-    }
-  </style>
+function createRowNumber(number: number) {
+  const style = ` 
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    box-sizing: border-box;
+    cursor: default;
+    left: 0;
+    height: 100%;
+    width: 40px;
 
-  <div id="row-number"></div>
-`.getHTML()
+    color: #858585;
+  `
+  return html`
+    <div role="presentation" style="${style}">
+      ${number}
+    </div>
+  `
+}
 
 export class RowNumber extends HTMLElement implements MarginColumn {
   public static readonly componentName = 'rxui-row-number'
-  public static readonly reservedWidth = 20
+  public static readonly reservedWidth = 42
+
+  _row: number = 0
+
+  public get row() {
+    return this._row
+  }
+
+  public set row(val: number) {
+    this._row = val
+    this.render()
+  }
 
   constructor() {
     super()
 
-    const shadow = this.attachShadow({mode: 'open'})
-    shadow.appendChild(rowNumber.content.cloneNode(true))
+    this.attachShadow({mode: 'open'})
   }
 
-  connectedCallback() {
-    this.setAttribute('role', 'presentation')
-  }
-
-  connectedToMarginCallback(row: number) {
-    this.shadowRoot?.querySelector('#row-number')!.innerHTML = String(row)
+  render() {
+    render(createRowNumber(this._row), this.shadowRoot!)
   }
 }
 

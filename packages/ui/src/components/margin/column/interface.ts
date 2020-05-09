@@ -1,5 +1,5 @@
 export interface MarginColumn extends HTMLElement {
-  connectedToMarginCallback(line: number): void
+  row?: number
 }
 
 export interface MarginColumnConstructor {
