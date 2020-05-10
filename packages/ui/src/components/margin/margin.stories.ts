@@ -26,9 +26,12 @@ export const Default = () => {
     margin.columns = selectedColumns.map(col => columns[col])
   }
 
+  margin.appendChild(new RowNumber())
+
   return margin
 }
 
 Default.story = {
   name: 'default',
+  decorators: [withKnobs],
 }
