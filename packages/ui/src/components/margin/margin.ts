@@ -1,6 +1,6 @@
 import {LitElement, css} from 'lit-element'
 import {html} from 'lit-html'
-import {styleMap} from 'lit-html/directives/style-map'
+
 import {repeat} from 'lit-html/directives/repeat'
 
 import {times} from '../../directives/times'
@@ -8,30 +8,24 @@ import {times} from '../../directives/times'
 import {MarginColumnConstructor} from './column/interface'
 import './column'
 
+const ROW_HEIGHT = 20
+
 export class Margin extends LitElement {
   static get styles() {
     return css`
       #margin {
-        position: absolute;
         background-color: #1e1e1e;
         color: #d4d4d4;
-        top: 0px;
         contain: strict;
       }
       #rows {
-        position: absolute;
-        width: 100%;
-        height: 100%;
         font-family: Arial;
         font-size: 14px;
-        line-height: 19px;
         letter-spacing: 0px;
       }
       .row {
-        position: absolute;
-        width: 100%;
         padding-right: 2px;
-        height: 19px;
+        height: ${ROW_HEIGHT}px;
       }
     `
   }
@@ -39,11 +33,10 @@ export class Margin extends LitElement {
   public rows = 30
   public columns: MarginColumnConstructor[] = []
 
-  private _rowHeight = 19
-
   render() {
     return html`
       <style>
+        /* TODO see if parent can grow to child widths for arbitrary amount of children */
         #margin {
           width: ${this.columns.reduce(
             (acc, col) => acc + col.reservedWidth,
@@ -54,7 +47,7 @@ export class Margin extends LitElement {
 
       <style>
         #margin {
-          height: ${this.rows * this._rowHeight}px;
+          height: ${this.rows * ROW_HEIGHT}px;
         }
       </style>
 
@@ -62,15 +55,16 @@ export class Margin extends LitElement {
         <div id="rows">
           ${times(
             this.rows,
-            i => html` <div class="row" style=${styleMap({top: i * 19 + 'px'})}>
-              ${repeat(this.columns, column => {
-                const columnElement = new column()
+            i =>
+              html` <div class="row">
+                ${repeat(this.columns, column => {
+                  const columnElement = new column()
 
-                columnElement.row = i + 1
+                  columnElement.row = i + 1
 
-                return columnElement
-              })}
-            </div>`,
+                  return columnElement
+                })}
+              </div>`,
           )}
         </div>
       </div>

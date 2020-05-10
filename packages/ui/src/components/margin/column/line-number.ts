@@ -9,14 +9,9 @@ export class RowNumber extends LitElement implements MarginColumn {
     return css`
       :host {
         display: inline-block;
-        vertical-align: middle;
         text-align: right;
-        box-sizing: border-box;
         cursor: default;
-        left: 0;
-        height: 100%;
         width: 40px;
-
         color: #858585;
       }
     `
