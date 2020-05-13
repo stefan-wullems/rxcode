@@ -1,4 +1,6 @@
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
+  transform: {
+    '^.+\\.(ts)?$': 'ts-jest',
+    '<rootDir>/node_modules/lit*': 'ts-jest',
+  },
 }

@@ -1,9 +1,8 @@
 import {MarginColumn} from './interface'
 import {html, LitElement, property, css} from 'lit-element'
 
-export class RowNumber extends LitElement implements MarginColumn {
-  public static readonly componentName = 'rxui-row-number'
-  public static readonly reservedWidth = 42
+export class LineNumber extends LitElement implements MarginColumn {
+  public static readonly componentName = 'rxui-line-number'
 
   static get styles() {
     return css`
@@ -28,4 +27,4 @@ export class RowNumber extends LitElement implements MarginColumn {
   }
 }
 
-customElements.define(RowNumber.componentName, RowNumber)
+customElements.define(LineNumber.componentName, LineNumber)
