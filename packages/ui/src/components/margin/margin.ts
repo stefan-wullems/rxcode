@@ -3,7 +3,8 @@ import {html} from 'lit-html'
 
 import {repeat} from 'lit-html/directives/repeat'
 
-import {times} from '../../directives/times'
+import {times} from '../../utils/directives/times'
+import {applyProps} from '../../utils/elements/applyProps'
 
 import './column'
 import {MarginColumn} from './column'
@@ -31,9 +32,10 @@ export class Margin extends LitElement {
     `
   }
 
-  public rowTemplate: HTMLTemplateElement = document.createElement('template')
+  @property({attribute: false})
+  rowTemplate: HTMLTemplateElement = document.createElement('template')
 
-  @property({type: Number}) rows = 30
+  @property({type: Number}) rows = 0
 
   renderRow(rowNumber: number) {
     const columns = this.rowTemplate
@@ -45,12 +47,7 @@ export class Margin extends LitElement {
     if (columns) {
       return html`
         <div class="row">
-          ${repeat(columns, column => {
-            column.row = rowNumber
-            console.log(column)
-
-            return column
-          })}
+          ${repeat(columns, column => applyProps(column, {row: rowNumber}))}
         </div>
       `
     }
