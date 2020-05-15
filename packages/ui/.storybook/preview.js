@@ -1,7 +1,4 @@
-import {configure, setCustomElements} from '@storybook/web-components'
-import customElements from '../custom-elements.json'
-
-setCustomElements(customElements)
+import {configure} from '@storybook/web-components'
 
 const req = require.context('../src', true, /\.stories\.(js|ts|mdx)$/)
 

@@ -1,6 +1,6 @@
 import {withKnobs, number} from '@storybook/addon-knobs'
 
-import {Margin} from './margin'
+import {Margin} from './margin.component'
 import './column'
 import {html} from 'lit-html'
 

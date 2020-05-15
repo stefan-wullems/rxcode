@@ -1,2 +1,2 @@
 export * from './interface'
-export * from './line-number'
+export * from './line-number.component'

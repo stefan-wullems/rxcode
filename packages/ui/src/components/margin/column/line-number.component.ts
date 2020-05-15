@@ -21,7 +21,7 @@ export class LineNumber extends LitElement implements MarginColumn {
   render() {
     return html`
       <div role="presentation">
-        ${this.row}
+        ${this.row !== -1 ? this.row : ''}
       </div>
     `
   }
