@@ -15,14 +15,13 @@ export class Margin extends LitElement {
   static readonly componentName = 'rxui-margin'
   static get styles() {
     return css`
-      #margin {
+      :host {
         background-color: #1e1e1e;
         color: #d4d4d4;
-        contain: strict;
         font-family: Arial;
         font-size: 14px;
-        letter-spacing: 0px;
 
+        /* This makes the margin shrink to the size of all of its columns */
         display: table;
       }
 
@@ -32,35 +31,25 @@ export class Margin extends LitElement {
     `
   }
 
-  @property({attribute: false})
-  rowTemplate: HTMLTemplateElement = document.createElement('template')
+  @property({attribute: false}) rowTemplate?: HTMLTemplateElement
 
   @property({type: Number}) rows = 0
 
   renderRow(rowNumber: number) {
-    const columns = this.rowTemplate
-      ? (this.rowTemplate.content.cloneNode(true).childNodes as NodeListOf<
-          MarginColumn
-        >)
-      : null
+    if (this.rowTemplate) {
+      const columns = this.rowTemplate.content.cloneNode(true)
+        .childNodes as NodeListOf<MarginColumn>
 
-    if (columns) {
       return html`
         <div class="row">
           ${repeat(columns, column => applyProps(column, {row: rowNumber}))}
         </div>
       `
     }
-
-    return html``
   }
 
   render() {
-    return html`
-      <div id="margin" role="presentation">
-        ${times(this.rows, i => this.renderRow(i + 1))}
-      </div>
-    `
+    return html` ${times(this.rows, i => this.renderRow(i + 1))} `
   }
 }
 

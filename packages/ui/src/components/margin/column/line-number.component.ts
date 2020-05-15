@@ -1,29 +1,28 @@
 import {MarginColumn} from './interface'
-import {html, LitElement, property, css} from 'lit-element'
+import {LitElement, property, css} from 'lit-element'
 
 export class LineNumber extends LitElement implements MarginColumn {
-  public static readonly componentName = 'rxui-line-number'
+  static readonly componentName = 'rxui-line-number'
 
   static get styles() {
     return css`
       :host {
         display: inline-block;
         text-align: right;
-        cursor: default;
         width: 40px;
         color: #858585;
+
+        /* This is here so that the user cannot select the line number */
+        user-select: none;
+        cursor: default;
       }
     `
   }
 
-  @property({type: Number}) row = -1
+  @property({type: Number}) row?: number
 
   render() {
-    return html`
-      <div role="presentation">
-        ${this.row !== -1 ? this.row : ''}
-      </div>
-    `
+    return this.row
   }
 }
 
