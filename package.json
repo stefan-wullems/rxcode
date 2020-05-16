@@ -4,29 +4,14 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-decorators": "^7.8.3",
-    "@babel/preset-typescript": "^7.9.0",
-    "@open-wc/testing-karma": "^3.3.21",
-    "@types/mocha": "^7.0.2",
-    "deepmerge": "^4.2.2",
     "lerna": "^3.20.2",
     "pretty-format": "25.5.0",
-    "ts-node": "^8.10.1",
     "typescript": "3.8.3"
   },
   "scripts": {
     "build": "lerna run build",
-    "build:deps": "lerna run build --no-private",
-    "start": "yarn build:deps && lerna run start --parallel --ignore @exivity/sandbox",
-    "start:web": "yarn build:deps && yarn --cwd packages/web start",
     "start:ui": "yarn --cwd packages/ui start",
-    "start:sandbox": "yarn build:deps && yarn --cwd packages/sandbox start",
-    "watch": "lerna run watch --parallel",
-    "test:components": "karma start --coverage",
-    "test:components:watch": "karma start --auto-watch=true --single-run=false",
-    "test:components:update-snapshots": "karma start --update-snapshots",
-    "test:components:prune-snapshots": "karma start --prune-snapshots"
+    "watch": "lerna run watch --parallel"
   },
   "workspaces": [
     "packages/*"

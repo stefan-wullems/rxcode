@@ -1,33 +1,21 @@
 {
   "name": "ui",
-  "version": "0.0.1",
-  "description": "UI for RxCode",
+  "version": "1.0.0",
   "main": "index.js",
-  "author": "Stefan Wullems <stefanwullems1998@gmail.com>",
   "license": "MIT",
-  "private": false,
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.4.3",
-    "lit-element": "^2.3.1",
-    "lit-html": "^1.2.1"
+    "@storybook/addon-knobs": "^5.3.18"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
-    "@babel/preset-typescript": "^7.9.0",
-    "@open-wc/testing": "^2.5.16",
-    "@open-wc/testing-karma": "^3.3.20",
-    "@storybook/addon-knobs": "^5.3.18",
-    "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/web-components": "6.0.0-beta.2",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/svelte": "^5.3.18",
     "babel-loader": "^8.1.0",
-    "copy-webpack-plugin": "^5.1.1",
-    "deepmerge": "^4.2.2",
-    "ts-loader": "^7.0.4",
-    "ts-node": "^8.10.1"
+    "svelte": "^3.22.2",
+    "svelte-loader": "^2.13.6"
   },
   "scripts": {
-    "start": "start-storybook",
-    "storybook": "start-storybook -p 6006",
+    "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   }
 }
