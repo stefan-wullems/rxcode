@@ -1,16 +1,11 @@
 <script>
-  const ROW_HEIGHT = 20
-
   export let rows = 0
-  export let columns = []
 </script>
 
 <div id='margin'>
   {#each Array(rows) as _, i}
     <div class="row">
-        {#each columns as Column}
-          <Column row={i + 1} />
-        {/each}
+      <slot row={i + 1}></slot>
     </div>
   {/each}
 </div>

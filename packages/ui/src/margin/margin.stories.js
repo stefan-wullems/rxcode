@@ -1,14 +1,7 @@
-import {number} from '@storybook/addon-knobs'
+import Component from "./margin.stories.svelte"
 
-import Margin from './margin.svelte'
-import LineNumber from './column/line-number.svelte'
-
-export default {title: 'Margin', component: Margin}
+export default { title: "Margin", component: Component }
 
 export const Default = () => ({
-  Component: Margin,
-  props: {
-    rows: number('Rows', 30),
-    columns: [LineNumber],
-  },
+  Component
 })

@@ -3,16 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "dependencies": {
-    "@storybook/addon-knobs": "^5.3.18"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@storybook/addons": "^5.3.18",
     "@storybook/svelte": "^5.3.18",
     "babel-loader": "^8.1.0",
     "svelte": "^3.22.2",
-    "svelte-loader": "^2.13.6"
+    "svelte-loader": "^2.13.6",
+    "@storybook/addon-knobs": "^5.3.18"
   },
   "scripts": {
     "start": "start-storybook -p 6006",
