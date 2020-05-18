@@ -1,5 +1,10 @@
 {
-  "extends": ["eslint:recommended"],
+  "extends": [
+    "eslint:recommended"
+  ],
+  "plugins": [
+    "import"
+  ],
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module"
@@ -62,6 +67,20 @@
     "prefer-const": "error",
     "prefer-template": "error",
     "rest-spread-spacing": ["error", "never"],
-    "template-curly-spacing": "error"
+    "template-curly-spacing": "error",
+
+    "import/no-absolute-path": ["error", { "esmodule": true, "commonjs": true, "amd": false }],
+    "import/no-webpack-loader-syntax": "error",
+    "import/export": "error",
+    "import/first": "error",
+    "import/no-duplicates": "error",
+    "import/no-named-default": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "newlines-between": "always"
+      }
+    ]
   }
 }
