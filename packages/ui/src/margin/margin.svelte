@@ -16,8 +16,6 @@
     color: #d4d4d4;
     font-family: Arial;
     font-size: 14px;
-
-    /* This makes the margin shrink to the size of all of its columns */
     display: table;
   }
 

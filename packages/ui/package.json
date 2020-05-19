@@ -6,15 +6,23 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/svelte": "^5.3.18",
+    "@testing-library/jest-dom": "^5.7.0",
+    "@testing-library/svelte": "^3.0.0",
+    "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
+    "jest": "^26.0.1",
     "svelte": "^3.22.2",
-    "svelte-loader": "^2.13.6",
-    "@storybook/addon-knobs": "^5.3.18"
+    "svelte-jester": "^1.0.6",
+    "svelte-loader": "^2.13.6"
   },
   "scripts": {
     "start": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test": "jest src",
+    "test:watch": "npm run test -- --watch"
   }
 }
