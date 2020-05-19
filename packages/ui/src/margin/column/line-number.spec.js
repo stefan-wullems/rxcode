@@ -4,8 +4,8 @@ import LineNumber from './line-number.svelte'
 
 describe('The LineNumber component', () => {
   it('displays row prop directly', () => {
-    render(LineNumber, {row: 1})
+    render(LineNumber, {props: {row: 42}})
 
-    expect(screen.getByText('1')).toBeInTheDocument()
+    expect(screen.getByText('42')).toBeInTheDocument()
   })
 })
