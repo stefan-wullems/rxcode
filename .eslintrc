@@ -1,9 +1,11 @@
 {
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:jest/style"
   ],
   "plugins": [
-    "import"
+    "import",
+    "jest"
   ],
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -11,7 +13,8 @@
   },
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "jest/globals": true
   },
   "rules": {
     "complexity": "warn",
@@ -62,7 +65,7 @@
     "space-in-parens": ["error", "never"],
     "space-infix-ops": "error",
     "space-unary-ops": ["error", {"words": true, "nonwords": false}],
-    "arrow-body-style": ["error", "never"],
+    "arrow-body-style": ["error", "as-needed"],
     "arrow-parens": ["error", "as-needed"],
     "arrow-spacing": "error",
     "no-useless-computed-key": "error",
@@ -86,5 +89,6 @@
         "newlines-between": "always"
       }
     ]
+
   }
 }
