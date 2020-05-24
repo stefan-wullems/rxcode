@@ -1,5 +1,5 @@
 <script>
-  import Margin from '../margin.svelte'
+  import Margin from '../../margin.svelte'
 
   export let test = ''
 </script>
