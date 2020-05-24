@@ -8,7 +8,9 @@ The editor is designed to be very flexible and minimalistic. It does not have an
 
 ## interface
 
-Since the editor is implemented in Svelte, the interface of the editor are its props and the context it handles. I decided to only handle props because context seems unneccesary. The editor is not a delegating component (meaning it passes props directly to its children to let them do the calculation) and we don't expect to have many editors next to eachother which should all share state.  
+### v1
+
+The first version of the interface is the most simple it can be. The interface is just designed to be easy to understand and work with.
 
 ```ts
 interface Overlay {
@@ -17,13 +19,8 @@ interface Overlay {
 }
 
 interface Decoration {
-  type: 'error' | 'warning' | 'meta',
+  type: 'error' | 'warning' | 'meta'
   [key: string]: any
-}
-
-interface Range<T> {
-  start: T
-  end: T
 }
 
 interface TextRange {
@@ -45,4 +42,13 @@ interface EditorProps {
 }
 ```
 
+
+#### type context
+
+```ts
+interface Range<T> {
+  start: T
+  end: T
+}
+```
 
