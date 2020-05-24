@@ -1,5 +1,4 @@
-import {render, screen} from '@testing-library/svelte'
-import userEvent from '@testing-library/user-event'
+import {render, screen, fireEvent} from '@testing-library/svelte'
 
 import Editor from '../../editor.svelte'
 
@@ -7,17 +6,19 @@ describe('The Editor component', () => {
   it('displays the value text', () => {
     render(Editor, {value: 'value'})
 
-    expect(screen.getByRole('textbox')).toHaveDisplayValue('value')
+    expect(screen.getByRole('textbox')).toHaveTextContent('value')
   })
 
   it('notifies listener when value changes', () => {
     const handleChange = jest.fn()
 
-    render(Editor, {props: {value: 'value', onChange: handleChange}})
+    render(Editor, {props: {value: 'test1', onChange: handleChange}})
 
-    userEvent.clear(screen.getByRole('textbox'))
-    userEvent.type(screen.getByRole('textbox'), 'Bla')
+    fireEvent.input(
+      screen.getByRole('textbox'),
+      {target: {innerText: 'test2'}}
+    )
 
-    expect(handleChange).toHaveBeenCalledWith('Bla')
+    expect(handleChange).toHaveBeenCalledWith('test2')
   })
 })
